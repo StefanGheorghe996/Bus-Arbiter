@@ -1,6 +1,6 @@
-# Complex Numbers Multiplier
+# Bus Arbiter
 
-The project consists of implementing an complex numbers multiplier in three ways, each with another degree of parallelism. All multiplier modules communications consist of valid-ready protocol. Alongside the multiplier modules, the project includes testbenches and monitors for each module.
+The project consists of implementing an Bus Arbiter for an request-acknowledge protocol.
 
 
 ## Running the tests
