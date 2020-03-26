@@ -3,8 +3,8 @@
 // Date:    26.03.2020
 
 module client_tb#(
-    DATA_WIDTH = 8,
-    ADDR_WIDTH = 4
+    parameter DATA_WIDTH = 8,
+    parameter ADDR_WIDTH = 4
 )(
     input                           clk,     // Clock signal
     input                           reset,   // Reset signal, active 1
@@ -20,8 +20,11 @@ task generate_ack;
     begin
         ack <= 'b0;
         @(posedge rq);
+        @(posedge clk);
         $display("%M %t - ACK SIGNAL ASSERTED", $time);
+        ack <= 'b1;
         @(negedge rq);
+        @(posedge clk);
         ack <= 'b0;
         $display("%M %t - ACK SIGNAL DEASSERTED", $time);
     end    
@@ -33,10 +36,13 @@ task generate_dataR;
     end    
 endtask
 
-initial 
+initial
     begin
         wait(reset);
-        generate_dataR;
-        generate_ack;
+        forever
+        begin
+            generate_dataR;
+            generate_ack;
+        end
     end
 endmodule // client_tb

@@ -48,7 +48,7 @@ end
 always @(posedge clk or posedge reset)
 begin
     if(reset) counter_3 <= 'b0;
-    else if (~rq && rq_delayed == 1) 
+    else if (~rq) 
     begin
         if (counter_3 <= REQUEST_DELAY-1)  counter_3 <= counter_3 + 1;     
         else                               counter_3 <= 'b0; 
@@ -67,13 +67,13 @@ always @(posedge clk or posedge reset)
 begin
     if(reset) rq <= 'b0;
     else if (counter_3 == REQUEST_DELAY) rq <= 'b1;
-    else if (ack == 1) rq <= 'b1;
-    else rq <= 'b0;
+    else if (ack == 1)                   rq <= 'b0;
 end 
 
 // Assigning outputs
-assign wr_ni = counter_2[0];
-assign dataW = counter_1;
+assign wr_ni    = (ack == 0 && rq == 1)? counter_2[0] : 'bz;
+assign dataW    = (ack == 0 && rq == 1)? counter_1 : 'bz;
+assign address  = (ack == 0 && rq == 1)? counter_2 : 'bz;
 
 
 endmodule // client
