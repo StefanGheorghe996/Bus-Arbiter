@@ -6,7 +6,7 @@ entity client_test is
         ADDR_WIDTH      : integer := 4;
         ADDR_SPACE_BEGINNING: integer := 0;
         ADDR_SPACE_END  : integer := 3;
-        REQUEST_DELAY   : integer := 2;
+        REQUEST_DELAY   : integer := 0;
         CLOCK_PERIOD    : integer := 5;
         RST_DELAY       : integer := 30;
         RST_DURATION    : integer := 2

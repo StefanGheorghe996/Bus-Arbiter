@@ -23,7 +23,6 @@ task generate_ack;
         @(posedge clk);
         $display("%M %t - ACK SIGNAL ASSERTED", $time);
         ack <= 'b1;
-        @(negedge rq);
         @(posedge clk);
         ack <= 'b0;
         $display("%M %t - ACK SIGNAL DEASSERTED", $time);
