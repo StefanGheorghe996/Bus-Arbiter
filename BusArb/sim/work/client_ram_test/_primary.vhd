@@ -1,6 +1,6 @@
 library verilog;
 use verilog.vl_types.all;
-entity client_test is
+entity client_ram_test is
     generic(
         DATA_WIDTH      : integer := 8;
         ADDR_WIDTH      : integer := 4;
@@ -11,4 +11,4 @@ entity client_test is
         RST_DELAY       : integer := 30;
         RST_DURATION    : integer := 2
     );
-end client_test;
+end client_ram_test;

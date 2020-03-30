@@ -23,6 +23,7 @@ module client#(
 reg [DATA_WIDTH-1 : 0] counter_1; // Counter for data generation
 reg [ADDR_WIDTH-1 : 0] counter_2; // Counter for address generation
 reg [DATA_WIDTH-1 : 0] counter_3; // Counter for request generation
+reg [DATA_WIDTH-1 : 0] dataR_reg; // Reg for holding read data
 
 reg rq_delayed; // Register used for the request negedge detection
 
@@ -62,6 +63,13 @@ begin
     else rq_delayed <= rq;
 end 
 
+// Modeling dataR_reg behaviour
+always @(posedge clk or posedge reset) 
+begin
+    if(reset) dataR_reg <= 'b0;
+    else dataR_reg <= dataR;
+end 
+
 // Modeling rq behaviour
 always @(posedge clk or posedge reset) 
 begin
@@ -72,8 +80,8 @@ end
 
 // Assigning outputs
 assign wr_ni    = counter_2[0];
-assign dataW    = counter_1;
-assign address  = counter_2;
+assign dataW    = 'd4;
+assign address  = 'b0;
 
 
 endmodule // client
