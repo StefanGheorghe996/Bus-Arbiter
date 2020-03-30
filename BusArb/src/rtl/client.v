@@ -71,9 +71,9 @@ begin
 end 
 
 // Assigning outputs
-assign wr_ni    = (ack == 0 && rq == 1)? counter_2[0] : 'bz;
-assign dataW    = (ack == 0 && rq == 1)? counter_1 : 'bz;
-assign address  = (ack == 0 && rq == 1)? counter_2 : 'bz;
+assign wr_ni    = counter_2[0];
+assign dataW    = counter_1;
+assign address  = counter_2;
 
 
 endmodule // client
