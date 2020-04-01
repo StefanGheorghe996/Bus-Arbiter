@@ -10,9 +10,9 @@ parameter DATA_WIDTH = 8;
 parameter ADDR_WIDTH = 4;
 parameter ADDR_SPACE_BEGINNING = 0;
 parameter ADDR_SPACE_END = 3;
-parameter REQUEST_DELAY = 1;
+parameter LFSR_SEED = 5'b00011;
 parameter CLOCK_PERIOD = 5;
-parameter RST_DELAY = 30;
+parameter RST_DELAY = 3;
 parameter RST_DURATION = 2;
 
 // Internal signals
@@ -26,7 +26,7 @@ wire [DATA_WIDTH-1 : 0] dataW   ;
 wire [DATA_WIDTH-1 : 0] dataR   ;
 
 // Module instantiation
-client #(DATA_WIDTH,ADDR_WIDTH,ADDR_SPACE_BEGINNING,ADDR_SPACE_END,REQUEST_DELAY) CLIENT (
+client #(DATA_WIDTH,ADDR_WIDTH,ADDR_SPACE_BEGINNING,ADDR_SPACE_END,LFSR_SEED) CLIENT (
     .clk        (clk    ), 
     .reset      (reset  ),
     .address    (address),

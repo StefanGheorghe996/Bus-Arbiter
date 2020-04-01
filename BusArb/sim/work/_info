@@ -12,33 +12,47 @@ n@_opt
 OE;O;6.6d;45
 Z1 dD:\Master - SECI\An 1\Semestrul 2\Retele integrate in cip (RIC)\Proiect\BusArb\sim
 vclient
-V4aB:EGnG>EAkj9h8B`QnN0
+Va8z_]81S_LbcHE?_mAkX;0
 r1
-!s85 0
 31
-Ioo^TadRSW]^HHfNNjlf8=3
+IMg^1GkPN8Qo]c>jRj<P^f1
 R1
-w1585594751
-8D:/Master - SECI/An 1/Semestrul 2/Retele integrate in cip (RIC)/Proiect/BusArb/src/rtl/client.v
-FD:/Master - SECI/An 1/Semestrul 2/Retele integrate in cip (RIC)/Proiect/BusArb/src/rtl/client.v
+w1585732532
+8../src/rtl/client.v
+F../src/rtl/client.v
 L0 5
 Z2 OE;L;6.6d;45
 Z3 o-work work -L mtiAvm -L mtiOvm -L mtiUPF
-!s100 5`Q=5=ooFgR@Fd`?1``9C1
-vclient_ram_test
-V9[F]6W=e7kef?Jh?n1GAR3
+!s85 0
+!s100 PV^@LCGNjjHHBc7UdT[1C3
+vclient_control_logic
+VZXgH:]]2hliIFS3ClTSJh0
 r1
 31
-I[6[On:;DYnc^P<@<nzYzg3
+I8@lH=oNa[P[P;D09K0m:71
 R1
-w1585593196
-8D:/Master - SECI/An 1/Semestrul 2/Retele integrate in cip (RIC)/Proiect/BusArb/src/tb/client_ram_test.v
-FD:/Master - SECI/An 1/Semestrul 2/Retele integrate in cip (RIC)/Proiect/BusArb/src/tb/client_ram_test.v
+w1585731335
+8../src/rtl/client_control_logic.v
+F../src/rtl/client_control_logic.v
+L0 5
+R2
+R3
+!s85 0
+!s100 nA;4RzhI<ifMEcG45h=;W2
+vclient_ram_test
+VLnOLm<TC_cafK9zjKmHJj2
+r1
+31
+IWmKXXM]SSCm:iCYfGnee53
+R1
+w1585731942
+8../src/tb/client_ram_test.v
+F../src/tb/client_ram_test.v
 L0 6
 R2
 R3
-!s100 3zNk8GD6jW16U:^j2FB=T1
 !s85 0
+!s100 A7TB8D?E:8UCjA;>a?L`^3
 vclient_tb
 IO0k4SgLOm=?P`ze@IX?O]3
 V]do6QzJWCZNfcF<J9GK;62
@@ -74,24 +88,38 @@ r1
 IAmNKXUR2L];F[:m]V=<gZ2
 R1
 w1585231268
-8D:/Master - SECI/An 1/Semestrul 2/Retele integrate in cip (RIC)/Proiect/BusArb/src/tb/clock_rst_gen.v
-FD:/Master - SECI/An 1/Semestrul 2/Retele integrate in cip (RIC)/Proiect/BusArb/src/tb/clock_rst_gen.v
+8../src/tb/clock_rst_gen.v
+F../src/tb/clock_rst_gen.v
 L0 5
 R2
 R3
-!s100 5l=@oQdR@WkVVnDi<`1RM0
 !s85 0
-vram
-Vef=nKkZEe[AVU=GD4j7G23
+!s100 5l=@oQdR@WkVVnDi<`1RM0
+vlfsr
+V@SO[W_d0]ZL[PEaQ>oMi10
 r1
 31
-I31_W[k:fFWHog7^FEI=2A3
+IzDP1k9CXe1@YZ1DndW>fV3
 R1
-w1585593789
-8D:/Master - SECI/An 1/Semestrul 2/Retele integrate in cip (RIC)/Proiect/BusArb/src/rtl/ram.v
-FD:/Master - SECI/An 1/Semestrul 2/Retele integrate in cip (RIC)/Proiect/BusArb/src/rtl/ram.v
+w1585732249
+8../src/rtl/lfsr.v
+F../src/rtl/lfsr.v
 L0 5
 R2
 R3
-!s100 YoA[3[zgo@b8[Yee<_dD>1
 !s85 0
+!s100 ;;Wnn6?2?I>cnT8n^64:z1
+vram
+VX2j]cVC4IAH_0oM=d@H[k0
+r1
+!s85 0
+31
+IkGmT4I[YHR<c;ZGj0PC<o2
+R1
+w1585732183
+8../src/rtl/ram.v
+F../src/rtl/ram.v
+L0 5
+R2
+R3
+!s100 k@z1Do<7=6WDigBVDB?KV1

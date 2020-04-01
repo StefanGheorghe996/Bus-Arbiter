@@ -2,8 +2,8 @@ library verilog;
 use verilog.vl_types.all;
 entity ram is
     generic(
-        ADDR_WIDTH      : integer := 4;
-        DATA_WIDTH      : integer := 8
+        DATA_WIDTH      : integer := 8;
+        ADDR_WIDTH      : integer := 4
     );
     port(
         clk             : in     vl_logic;

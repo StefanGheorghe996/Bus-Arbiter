@@ -6,7 +6,7 @@ entity client is
         ADDR_WIDTH      : integer := 4;
         ADDR_SPACE_BEGINNING: integer := 0;
         ADDR_SPACE_END  : integer := 3;
-        REQUEST_DELAY   : integer := 10
+        LFSR_SEED       : integer := 5
     );
     port(
         clk             : in     vl_logic;

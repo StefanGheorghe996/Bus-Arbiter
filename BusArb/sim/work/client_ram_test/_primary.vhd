@@ -6,9 +6,9 @@ entity client_ram_test is
         ADDR_WIDTH      : integer := 4;
         ADDR_SPACE_BEGINNING: integer := 0;
         ADDR_SPACE_END  : integer := 3;
-        REQUEST_DELAY   : integer := 1;
+        LFSR_SEED       : integer := 3;
         CLOCK_PERIOD    : integer := 5;
-        RST_DELAY       : integer := 30;
+        RST_DELAY       : integer := 3;
         RST_DURATION    : integer := 2
     );
 end client_ram_test;
