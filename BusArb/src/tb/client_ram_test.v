@@ -11,6 +11,7 @@ parameter ADDR_WIDTH = 4;
 parameter ADDR_SPACE_BEGINNING = 0;
 parameter ADDR_SPACE_END = 3;
 parameter LFSR_SEED = 5'b00011;
+parameter DELAY_ACK = 5;     
 parameter CLOCK_PERIOD = 5;
 parameter RST_DELAY = 3;
 parameter RST_DURATION = 2;
@@ -42,8 +43,9 @@ clock_rst_gen #(CLOCK_PERIOD,RST_DELAY,RST_DURATION) CLK_GEN (
     .reset      (reset  )
 );
 
-ram #(DATA_WIDTH,ADDR_WIDTH) RAM(
+ram #(DATA_WIDTH,ADDR_WIDTH,DELAY_ACK) RAM(
     .clk        (clk    ), 
+    .reset      (reset  ),
     .address    (address),
     .rq         (rq     ),
     .ack        (ack    ),

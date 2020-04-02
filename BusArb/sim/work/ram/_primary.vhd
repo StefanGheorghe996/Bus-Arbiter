@@ -3,10 +3,12 @@ use verilog.vl_types.all;
 entity ram is
     generic(
         DATA_WIDTH      : integer := 8;
-        ADDR_WIDTH      : integer := 4
+        ADDR_WIDTH      : integer := 4;
+        DELAY_ACK       : integer := 2
     );
     port(
         clk             : in     vl_logic;
+        reset           : in     vl_logic;
         address         : in     vl_logic_vector;
         rq              : in     vl_logic;
         ack             : out    vl_logic;
