@@ -28,6 +28,7 @@ module client#(
     wire enable_address_counter ;
     wire enable_data_counter    ;
     wire enable_lfsr            ;
+    wire enable_rq              ;
 
     // Module instantiation
 
@@ -36,6 +37,7 @@ module client#(
         .rst                    ( reset                  ),
         .ack                    ( ack                    ),
         .rq                     ( request_wire           ),
+        .enable_rq              ( enable_rq              ),
         .enable_address_counter ( enable_address_counter ),                   
         .enable_data_counter    ( enable_data_counter    ),                
         .enable_lfsr            ( enable_lfsr            ),        
@@ -60,7 +62,8 @@ module client#(
     always @(posedge clk or posedge reset)
     begin
         if(reset) counter_2 <= 'b0;
-        else if ((enable_address_counter == 'b1) && (counter_2<= ADDR_SPACE_END) && (counter_2 >= ADDR_SPACE_BEGINNING)) counter_2 <= counter_2 + 'b1; 
+        else if ((enable_address_counter == 'b1) && (counter_2 < ADDR_SPACE_END) && (counter_2 >= ADDR_SPACE_BEGINNING)) counter_2 <= counter_2 + 'b1; 
+        else if(enable_address_counter && counter_2 == ADDR_SPACE_END) counter_2 <= 'b0;
     end
     
     always @(posedge clk or posedge reset)
@@ -73,7 +76,7 @@ module client#(
 
     assign address = counter_2;
     assign dataW   = counter_1;
-    assign rq      = request_wire && ~ack;
+    assign rq      = enable_rq;
 
 
 endmodule // client

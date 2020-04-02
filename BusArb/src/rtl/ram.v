@@ -31,6 +31,7 @@ module ram #(
         rq_d <= rq;
     end
 
-    assign  ack = rq && rq_d;
+    
+    assign ack = rq && rq_d;
 
 endmodule

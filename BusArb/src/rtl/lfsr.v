@@ -16,31 +16,22 @@ module lfsr#(
 
     // Internal registers
 
-    reg bit_1;
-    reg bit_2;
-    reg bit_3;
-    reg bit_4;
-    reg bit_5;
+    reg [4:0] d;
 
-    always @(posedge clk or posedge rst)
-    begin
-        if (rst) begin
-            bit_1 <= SEED[0];
-            bit_2 <= SEED[1];
-            bit_3 <= SEED[2];
-            bit_4 <= SEED[3];
-            bit_5 <= SEED[4];
+    always @(posedge clk or posedge rst) begin
+        if(rst) 
+        begin
+            d[0] <= SEED[0];
+            d[1] <= SEED[1];
+            d[2] <= SEED[2];
+            d[3] <= SEED[3];
+            d[4] <= SEED[4];
         end
-
         else if (enable) begin
-            bit_1 <= bit_3 ~^ bit_5;  
-            bit_2 <= bit_1; 
-            bit_3 <= bit_2; 
-            bit_4 <= bit_3; 
-            bit_5 <= bit_4; 
+            d <= { d[3:0], d[4] ^ d[2] };     
         end
     end
 
-assign rq = enable && bit_2 && bit_3;
+assign rq = enable && ((d[2] | d[1]));
 
 endmodule // lfsr

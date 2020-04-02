@@ -11,6 +11,7 @@ module client_control_logic
     output      enable_address_counter,
     output      enable_data_counter,
     output      enable_lfsr,
+    output      enable_rq,
     output      wr_ni
 );
 
@@ -18,7 +19,7 @@ module client_control_logic
     //State parameters
     parameter IDLE                          = 3'b000; // Idle state
     parameter GENERATE_WRITE_TRANSACTION    = 3'b010; // Wait for the request signal to be generated, generate write transaction
-    parameter GENERATE_READ_TRANSACTION     = 3'b010; // Wait for the request signal to be generated, generate write transaction
+    parameter GENERATE_READ_TRANSACTION     = 3'b011; // Wait for the request signal to be generated, generate write transaction
     parameter WAIT_ACK                      = 3'b100; // Wait for receiving ack
 
 
@@ -70,5 +71,6 @@ module client_control_logic
     assign enable_address_counter   = state == GENERATE_WRITE_TRANSACTION;   
     assign enable_data_counter      = state == GENERATE_WRITE_TRANSACTION;  
     assign enable_lfsr              = state == GENERATE_WRITE_TRANSACTION | GENERATE_READ_TRANSACTION;  
+    assign enable_rq                = state == WAIT_ACK;
 
 endmodule // client_control_logic 
