@@ -27,7 +27,7 @@ localparam CLIENT_3_LFSR_SEED            = 'b00100;
 // Fourth client module specific parameters     
 localparam CLIENT_4_ADDR_SPACE_BEGINNING = 12;       
 localparam CLIENT_4_ADDR_SPACE_END       = 15;       
-localparam CLIENT_4_LFSR_SEED            = 'b00100;      
+localparam CLIENT_4_LFSR_SEED            = 'b00000;      
 
 
 // Server memory module specific parameters     

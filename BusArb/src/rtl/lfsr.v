@@ -28,7 +28,7 @@ module lfsr#(
             d[4] <= SEED[4];
         end
         else if (enable) begin
-            d <= { d[3:0], d[4] ^ d[2] };     
+            d <= { d[3:0], d[4] ^~ d[3] };     
         end
     end
 
