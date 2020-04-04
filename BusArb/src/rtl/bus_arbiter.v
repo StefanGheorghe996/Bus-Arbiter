@@ -5,6 +5,10 @@
 module bus_arbiter #(
     parameter DATA_WIDTH = 8,
     parameter ADDR_WIDTH = 4,
+    parameter CLIENT_1_PRIORITY = 0,
+    parameter CLIENT_2_PRIORITY = 1,
+    parameter CLIENT_3_PRIORITY = 2,
+    parameter CLIENT_4_PRIORITY = 3,
     parameter PRIORITY_SCHEDULING_ALGORITHM = 1'b0 // Parameter used for selecting between priority scheduling algorithms: 0 for strict priority, 1 for round robin 
 )(
     // Global signals
@@ -86,6 +90,14 @@ module bus_arbiter #(
         .third_priority_channel_addr    (third_priority_channel_addr    ),
         .fourth_priority_channel_addr   (fourth_priority_channel_addr   )   
     );
+
+    always @(posedge reset)
+    begin
+        client_1_priority <= CLIENT_1_PRIORITY;
+        client_2_priority <= CLIENT_2_PRIORITY;
+        client_3_priority <= CLIENT_3_PRIORITY;
+        client_4_priority <= CLIENT_4_PRIORITY;
+    end
 
     
     always @(posedge clk or posedge reset)
