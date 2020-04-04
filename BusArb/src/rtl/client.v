@@ -69,7 +69,7 @@ module client#(
     always @(posedge clk or posedge reset)
     begin
         if(reset) dataR_reg <= 'b0;
-        else dataR_reg <= dataR; 
+        else if (ack) dataR_reg <= dataR; 
     end
 
     

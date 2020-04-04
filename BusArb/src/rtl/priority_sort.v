@@ -30,7 +30,7 @@ end
 
 always @(posedge clk or posedge reset)
 begin
-    if(reset) first_priority_channel_addr <= 'b0;
+    if(reset) second_priority_channel_addr <= 'b0;
     else if(client_1_priority == 2'b01) second_priority_channel_addr <= 2'b00;
     else if(client_2_priority == 2'b01) second_priority_channel_addr <= 2'b01;
     else if(client_3_priority == 2'b01) second_priority_channel_addr <= 2'b10;
@@ -39,7 +39,7 @@ end
 
 always @(posedge clk or posedge reset)
 begin
-    if(reset) first_priority_channel_addr <= 'b0;
+    if(reset) third_priority_channel_addr <= 'b0;
     else if(client_1_priority == 2'b10) third_priority_channel_addr <= 2'b00;
     else if(client_2_priority == 2'b10) third_priority_channel_addr <= 2'b01;
     else if(client_3_priority == 2'b10) third_priority_channel_addr <= 2'b10;
@@ -48,7 +48,7 @@ end
 
 always @(posedge clk or posedge reset)
 begin
-    if(reset) first_priority_channel_addr <= 'b0;
+    if(reset) fourth_priority_channel_addr <= 'b0;
     else if(client_1_priority == 2'b11) fourth_priority_channel_addr <= 2'b00;
     else if(client_2_priority == 2'b11) fourth_priority_channel_addr <= 2'b01;
     else if(client_3_priority == 2'b11) fourth_priority_channel_addr <= 2'b10;
