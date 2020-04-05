@@ -22,7 +22,7 @@ localparam CLIENT_2_LFSR_SEED            = 'b00111;
 // Third client module specific parameters      
 localparam CLIENT_3_ADDR_SPACE_BEGINNING = 8;        
 localparam CLIENT_3_ADDR_SPACE_END       = 11;       
-localparam CLIENT_3_LFSR_SEED            = 'b00100;      
+localparam CLIENT_3_LFSR_SEED            = 'b01100;      
 
 // Fourth client module specific parameters     
 localparam CLIENT_4_ADDR_SPACE_BEGINNING = 12;       

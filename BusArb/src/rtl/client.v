@@ -69,7 +69,7 @@ module client#(
     always @(*)
     begin
         if(reset) dataR_reg <= 'b0;
-        else if (ack) dataR_reg <= dataR; 
+        else if (ack && wr_ni) dataR_reg <= dataR; 
     end
 
     
