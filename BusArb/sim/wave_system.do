@@ -87,9 +87,19 @@ add wave -noupdate /system_test/ARBITER/SP_LOGIC/first_priority_channel_addr
 add wave -noupdate /system_test/ARBITER/SP_LOGIC/second_priority_channel_addr
 add wave -noupdate /system_test/ARBITER/SP_LOGIC/third_priority_channel_addr
 add wave -noupdate /system_test/ARBITER/SP_LOGIC/fourth_priority_channel_addr
-add wave -noupdate /system_test/ARBITER/SP_LOGIC/state
+add wave -noupdate -divider SERVER
+add wave -noupdate /system_test/RAM/clk
+add wave -noupdate /system_test/RAM/reset
+add wave -noupdate /system_test/RAM/address
+add wave -noupdate /system_test/RAM/rq
+add wave -noupdate /system_test/RAM/ack
+add wave -noupdate /system_test/RAM/wr_ni
+add wave -noupdate /system_test/RAM/dataW
+add wave -noupdate /system_test/RAM/dataR
+add wave -noupdate /system_test/RAM/rq_d
+add wave -noupdate /system_test/RAM/delay_counter
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {615 ns} 0}
+WaveRestoreCursors {{Cursor 1} {75 ns} 0}
 configure wave -namecolwidth 340
 configure wave -valuecolwidth 170
 configure wave -justifyvalue left
@@ -104,4 +114,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {379 ns} {1360 ns}
+WaveRestoreZoom {0 ns} {981 ns}

@@ -31,7 +31,8 @@ localparam CLIENT_4_LFSR_SEED            = 'b00000;
 
 
 // Server memory module specific parameters     
-localparam DELAY_ACK                     = 2;        
+localparam DELAY_ACK                     = 0;   
+localparam NO_DELAY                      = 1;     
 
 
 // Bus arbiter module specific parameters
@@ -188,7 +189,7 @@ bus_arbiter #(DATA_WIDTH,ADDR_WIDTH,CLIENT_1_PRIORITY,CLIENT_2_PRIORITY,CLIENT_3
 
 
 
-ram #(DATA_WIDTH,ADDR_WIDTH,DELAY_ACK) RAM(
+ram #(DATA_WIDTH,ADDR_WIDTH,NO_DELAY,DELAY_ACK) RAM(
     .clk        (clk    ), 
     .reset      (reset  ),
     .address    (address_srv),

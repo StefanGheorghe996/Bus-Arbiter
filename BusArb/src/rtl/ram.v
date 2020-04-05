@@ -5,6 +5,7 @@
 module ram #(
     parameter DATA_WIDTH = 8,
     parameter ADDR_WIDTH = 4,
+    parameter NO_DELAY   = 1'b1, // 0 for delayed acknowlege
     parameter DELAY_ACK = 2   // Number of clock cycles before ack, can take values between 0 and 15  
 )(
     input                           clk,     // Clock signal
@@ -25,8 +26,8 @@ module ram #(
 
     always @(posedge clk)
     begin
-        if(rq && wr_ni) dataR <= mem[address];
-        else if (rq && ~wr_ni) mem[address] <= dataW;
+        if(rq && wr_ni)         dataR <= mem[address];
+        else if (rq && ~wr_ni)  mem[address] <= dataW;
     end
 
     always @(posedge clk)
@@ -44,6 +45,6 @@ module ram #(
     end
 
     
-    assign ack = rq && rq_d && (delay_counter == DELAY_ACK);
+    assign ack = rq && rq_d && (delay_counter == DELAY_ACK && ~NO_DELAY);
 
 endmodule
