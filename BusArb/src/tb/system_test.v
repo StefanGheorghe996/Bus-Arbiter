@@ -30,7 +30,8 @@ localparam CLIENT_4_ADDR_SPACE_END       = 15;
 localparam CLIENT_4_LFSR_SEED            = 'b00000;      
 
 
-// Server memory module specific parameters     
+// Server memory module specific parameters 
+localparam MEMORY_DEPTH                  = 16;    
 localparam DELAY_ACK                     = 0;   
 localparam NO_DELAY                      = 1;     
 
@@ -189,7 +190,7 @@ bus_arbiter #(DATA_WIDTH,ADDR_WIDTH,CLIENT_1_PRIORITY,CLIENT_2_PRIORITY,CLIENT_3
 
 
 
-ram #(DATA_WIDTH,ADDR_WIDTH,NO_DELAY,DELAY_ACK) RAM(
+ram #(DATA_WIDTH,ADDR_WIDTH,MEMORY_DEPTH,NO_DELAY,DELAY_ACK) RAM(
     .clk        (clk    ), 
     .reset      (reset  ),
     .address    (address_srv),
@@ -198,6 +199,50 @@ ram #(DATA_WIDTH,ADDR_WIDTH,NO_DELAY,DELAY_ACK) RAM(
     .wr_ni      (wr_ni_srv  ),
     .dataW      (dataW_srv  ),
     .dataR      (dataR_srv  )
+);
+
+
+monitor_bus_arbiter #(DATA_WIDTH,ADDR_WIDTH) MONITOR(
+    .clk                        (clk            ),
+    .reset                      (reset          ),
+    .server_address             (address_srv    ),
+    .server_rq                  (rq_srv         ),
+    .server_ack                 (ack_srv        ),
+    .server_wr_ni               (wr_ni_srv      ),
+    .server_dataW               (dataW_srv      ),
+    .server_dataR               (dataR_srv      ),
+
+
+    .client_1_address           (address_client_1    ),
+    .client_1_rq                (rq_client_1         ),
+    .client_1_ack               (ack_client_1        ),
+    .client_1_wr_ni             (wr_ni_client_1      ),
+    .client_1_dataW             (dataW_client_1      ),
+    .client_1_dataR             (dataR_client_1      ),
+
+
+    .client_2_address           (address_client_2    ),
+    .client_2_rq                (rq_client_2         ),
+    .client_2_ack               (ack_client_2        ),
+    .client_2_wr_ni             (wr_ni_client_2      ),
+    .client_2_dataW             (dataW_client_2      ),
+    .client_2_dataR             (dataR_client_2      ),
+
+
+    .client_3_address           (address_client_3    ),
+    .client_3_rq                (rq_client_3         ),
+    .client_3_ack               (ack_client_3        ),
+    .client_3_wr_ni             (wr_ni_client_3      ),
+    .client_3_dataW             (dataW_client_3      ),
+    .client_3_dataR             (dataR_client_3      ),
+
+
+    .client_4_address           (address_client_4    ),
+    .client_4_rq                (rq_client_4         ),
+    .client_4_ack               (ack_client_4        ),
+    .client_4_wr_ni             (wr_ni_client_4      ),
+    .client_4_dataW             (dataW_client_4      ),
+    .client_4_dataR             (dataR_client_4      )
 );
 
     

@@ -38,7 +38,11 @@ module strict_priority_logic
     wire third_priority_request ;
     wire fourth_priority_request;
 
+    localparam INIT         = 2'b00;
+    localparam COMPUTE_ADDR = 2'b01;
+    localparam WAIT_ACK     = 2'b10;
 
+    reg [1:0] state;
 
 
     // Module instantiation
@@ -54,7 +58,20 @@ module strict_priority_logic
         .second_priority_channel_addr   (second_priority_channel_addr   ),
         .third_priority_channel_addr    (third_priority_channel_addr    ),
         .fourth_priority_channel_addr   (fourth_priority_channel_addr   )   
-    );    
+    );  
+
+    always @(posedge clk or posedge reset)
+    begin
+        if(reset) state <= INIT;
+        else
+        case (state)
+            INIT:   state <= COMPUTE_ADDR; 
+            COMPUTE_ADDR : state <= WAIT_ACK;
+            WAIT_ACK :  if(server_ack) state <= COMPUTE_ADDR;
+                        else state <= WAIT_ACK; 
+            default: state <= INIT;
+        endcase 
+    end  
     
     always@(posedge clk or posedge reset)
     begin
@@ -62,10 +79,10 @@ module strict_priority_logic
 
         else
         begin
-            if      (first_priority_request)                                                                                    address_to_be_served <= first_priority_channel_addr;
-            else if (~first_priority_request && second_priority_request)                                                        address_to_be_served <= second_priority_channel_addr;
-            else if (~first_priority_request && ~second_priority_request && third_priority_request)                             address_to_be_served <= third_priority_channel_addr;
-            else if (~first_priority_request && ~second_priority_request && ~third_priority_request && fourth_priority_request) address_to_be_served <= fourth_priority_channel_addr;
+            if      (first_priority_request  && state == COMPUTE_ADDR)                                                                                      address_to_be_served <= first_priority_channel_addr;
+            else if (~first_priority_request && second_priority_request && state == COMPUTE_ADDR)                                                           address_to_be_served <= second_priority_channel_addr;
+            else if (~first_priority_request && ~second_priority_request && third_priority_request && state == COMPUTE_ADDR)                                address_to_be_served <= third_priority_channel_addr;
+            else if (~first_priority_request && ~second_priority_request && ~third_priority_request && fourth_priority_request && state == COMPUTE_ADDR)    address_to_be_served <= fourth_priority_channel_addr;
         end
 
 

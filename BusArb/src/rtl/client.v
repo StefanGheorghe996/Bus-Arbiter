@@ -63,7 +63,7 @@ module client#(
     begin
         if(reset) counter_2 <= ADDR_SPACE_BEGINNING;
         else if ((enable_address_counter == 'b1) && (counter_2 < ADDR_SPACE_END) && (counter_2 >= ADDR_SPACE_BEGINNING)) counter_2 <= counter_2 + 'b1; 
-        else if(enable_address_counter && counter_2 == ADDR_SPACE_END) counter_2 <= 'b0;
+        else if(enable_address_counter && counter_2 == ADDR_SPACE_END) counter_2 <= ADDR_SPACE_BEGINNING;
     end
     
     always @(*)

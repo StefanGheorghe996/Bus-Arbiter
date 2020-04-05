@@ -98,6 +98,7 @@ module bus_arbiter #(
         client_4_priority <= CLIENT_4_PRIORITY;
     end
 
+
     assign server_rq =  (address_to_be_served == 'b00)? client_1_rq:
                         (address_to_be_served == 'b01)? client_2_rq:
                         (address_to_be_served == 'b10)? client_3_rq:
@@ -128,5 +129,6 @@ module bus_arbiter #(
                                 (address_to_be_served == 'b01)? client_2_address:
                                 (address_to_be_served == 'b10)? client_3_address:
                                 (address_to_be_served == 'b11)? client_4_address:'b0;
-    
+
+
 endmodule
