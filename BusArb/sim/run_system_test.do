@@ -5,6 +5,7 @@ vlog -work work -L mtiAvm -L mtiOvm -L mtiUPF {../src/tb/monitor_bus_arbiter.v}
 vlog -work work -L mtiAvm -L mtiOvm -L mtiUPF {../src/rtl/client.v}
 vlog -work work -L mtiAvm -L mtiOvm -L mtiUPF {../src/rtl/lfsr.v}
 vlog -work work -L mtiAvm -L mtiOvm -L mtiUPF {../src/rtl/strict_priority_logic.v}
+vlog -work work -L mtiAvm -L mtiOvm -L mtiUPF {../src/rtl/round_robin_logic.v}
 vlog -work work -L mtiAvm -L mtiOvm -L mtiUPF {../src/rtl/ram.v}
 vlog -work work -L mtiAvm -L mtiOvm -L mtiUPF {../src/tb/clock_rst_gen.v}
 vlog -work work -L mtiAvm -L mtiOvm -L mtiUPF {../src/tb/system_test.v}

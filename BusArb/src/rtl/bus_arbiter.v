@@ -5,6 +5,7 @@
 module bus_arbiter #(
     parameter DATA_WIDTH = 8,
     parameter ADDR_WIDTH = 4,
+    parameter NR_OF_CLIENTS = 4,
     parameter CLIENT_1_PRIORITY = 0,
     parameter CLIENT_2_PRIORITY = 1,
     parameter CLIENT_3_PRIORITY = 2,
@@ -70,6 +71,8 @@ module bus_arbiter #(
     reg [1:0] client_4_priority;
 
     wire [1:0] address_to_be_served;
+    wire [1:0] address_to_be_served_sp;
+    wire [1:0] address_to_be_served_rr;
 
     reg       scheduling_algorithm;
 
@@ -80,6 +83,19 @@ module bus_arbiter #(
 
 
     // Module instantiation
+
+    round_robin_logic#(NR_OF_CLIENTS) RR_LOGIC(
+        .clk                     (clk                    ),
+        .reset                   (reset                  ),
+        .client_1_rq             (client_1_rq            ),
+        .client_2_rq             (client_2_rq            ),
+        .client_3_rq             (client_3_rq            ),
+        .client_4_rq             (client_4_rq            ),
+        .server_ack              (server_ack             ),
+        .address_to_be_served    (address_to_be_served_rr),
+        .enable                  (scheduling_algorithm   )
+
+    );
 
     strict_priority_logic SP_LOGIC(
         .clk                    (clk                    ),
@@ -93,9 +109,11 @@ module bus_arbiter #(
         .client_4_priority      (client_4_priority      ),
         .client_4_rq            (client_4_rq            ),
         .server_ack             (server_ack             ),
-        .address_to_be_served   (address_to_be_served   ),
+        .address_to_be_served   (address_to_be_served_sp),
         .enable                 (~scheduling_algorithm  )
     );
+
+    assign address_to_be_served = (scheduling_algorithm)? address_to_be_served_rr:address_to_be_served_sp;
 
     always @(posedge clk or posedge reset)
     begin

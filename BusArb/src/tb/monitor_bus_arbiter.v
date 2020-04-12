@@ -57,29 +57,29 @@ module monitor_bus_arbiter#(
     input     [DATA_WIDTH-1 : 0]   client_4_dataR
 );
 
-    always @(posedge client_1_rq)  
-        begin
-            if(client_1_wr_ni)      $display(" %t - CLIENT 1 - READ - ADDRESS: %b", $time,client_1_address);
-            else                    $display(" %t - CLIENT 1 - WRITE - ADDRESS: %b - DATA: %b", $time,client_1_address,client_1_dataW);
-        end
-
-    always @(posedge client_2_rq)    
-        begin
-            if(client_2_wr_ni)      $display(" %t - CLIENT 2 - READ - ADDRESS: %b", $time,client_2_address);
-            else                    $display(" %t - CLIENT 2 - WRITE - ADDRESS: %b - DATA: %b", $time,client_2_address,client_2_dataW);
-        end
-
-      always @(posedge client_3_rq)  
-        begin
-            if(client_3_wr_ni)      $display(" %t - CLIENT 3 - READ - ADDRESS: %b", $time,client_3_address);
-            else                    $display(" %t - CLIENT 3 - WRITE - ADDRESS: %b - DATA: %b", $time,client_3_address,client_3_dataW);
-        end
-
-    always @(posedge client_4_rq)  
-        begin
-            if(client_4_wr_ni)      $display(" %t - CLIENT 4 - READ - ADDRESS: %b", $time,client_4_address);
-            else                    $display(" %t - CLIENT 4 - WRITE - ADDRESS: %b - DATA: %b", $time,client_4_address,client_4_dataW);
-        end 
+    //always @(posedge client_1_rq)  
+    //    begin
+    //        if(client_1_wr_ni)      $display(" %t - CLIENT 1 - READ - ADDRESS: %b", $time,client_1_address);
+    //        else                    $display(" %t - CLIENT 1 - WRITE - ADDRESS: %b - DATA: %b", $time,client_1_address,client_1_dataW);
+    //    end
+//
+    //always @(posedge client_2_rq)    
+    //    begin
+    //        if(client_2_wr_ni)      $display(" %t - CLIENT 2 - READ - ADDRESS: %b", $time,client_2_address);
+    //        else                    $display(" %t - CLIENT 2 - WRITE - ADDRESS: %b - DATA: %b", $time,client_2_address,client_2_dataW);
+    //    end
+//
+    //  always @(posedge client_3_rq)  
+    //    begin
+    //        if(client_3_wr_ni)      $display(" %t - CLIENT 3 - READ - ADDRESS: %b", $time,client_3_address);
+    //        else                    $display(" %t - CLIENT 3 - WRITE - ADDRESS: %b - DATA: %b", $time,client_3_address,client_3_dataW);
+    //    end
+//
+    //always @(posedge client_4_rq)  
+    //    begin
+    //        if(client_4_wr_ni)      $display(" %t - CLIENT 4 - READ - ADDRESS: %b", $time,client_4_address);
+    //        else                    $display(" %t - CLIENT 4 - WRITE - ADDRESS: %b - DATA: %b", $time,client_4_address,client_4_dataW);
+    //    end 
     
 
     always @(posedge client_1_ack)  

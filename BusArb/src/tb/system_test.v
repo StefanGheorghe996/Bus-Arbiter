@@ -7,7 +7,8 @@ module system_test;
 
 // General parameters       
 localparam DATA_WIDTH                    = 8;        
-localparam ADDR_WIDTH                    = 4;        
+localparam ADDR_WIDTH                    = 4; 
+localparam NR_OF_CLIENTS                 = 4;       
 
 // First client module specific parameters      
 localparam CLIENT_1_ADDR_SPACE_BEGINNING = 0;      // Assigning an address space for the client          
@@ -41,7 +42,7 @@ localparam CLIENT_1_PRIORITY = 1;
 localparam CLIENT_2_PRIORITY = 2;
 localparam CLIENT_3_PRIORITY = 3;
 localparam CLIENT_4_PRIORITY = 0;
-localparam PRIORITY_SCHEDULING_ALGORITHM = 1'b0;     // 0 = strict priority 1 = round robin
+localparam PRIORITY_SCHEDULING_ALGORITHM = 1'b1;     // 0 = strict priority 1 = round robin
 
 // Clock and reset generator module specific parameters
 localparam CLOCK_PERIOD = 5;
@@ -145,7 +146,7 @@ client #(DATA_WIDTH,ADDR_WIDTH,CLIENT_4_ADDR_SPACE_BEGINNING,CLIENT_4_ADDR_SPACE
 );
 
 
-bus_arbiter #(DATA_WIDTH,ADDR_WIDTH,CLIENT_1_PRIORITY,CLIENT_2_PRIORITY,CLIENT_3_PRIORITY,CLIENT_4_PRIORITY,PRIORITY_SCHEDULING_ALGORITHM) ARBITER(
+bus_arbiter #(DATA_WIDTH,ADDR_WIDTH,NR_OF_CLIENTS ,CLIENT_1_PRIORITY,CLIENT_2_PRIORITY,CLIENT_3_PRIORITY,CLIENT_4_PRIORITY,PRIORITY_SCHEDULING_ALGORITHM) ARBITER(
     .clk                        (clk            ),
     .reset                      (reset          ),
     .server_address             (address_srv    ),
