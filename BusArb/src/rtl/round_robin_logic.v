@@ -21,7 +21,7 @@ module round_robin_logic#(
 
     // Internal signals, registers and parameters
 
-    reg [3:0] ring_counter; 
+    reg [NUMBER_OF_CLIENTS:0] ring_counter; 
     reg [1:0] sp_1_client_1_priority;
     reg [1:0] sp_1_client_2_priority;
     reg [1:0] sp_1_client_3_priority;
@@ -214,12 +214,11 @@ module round_robin_logic#(
             ring_counter[NUMBER_OF_CLIENTS-2:0] <= 'b0;
         end
         else if (enable)
-        if(NUMBER_OF_CLIENTS == 'd4)
         begin
-            if      (sp_1_enable && sp_1_address_to_be_served == 2'b00) ring_counter <= (server_ack)? {ring_counter[0],ring_counter[3:1]} : ring_counter;
-            else if (sp_2_enable && sp_2_address_to_be_served == 2'b01) ring_counter <= (server_ack)? {ring_counter[0],ring_counter[3:1]} : ring_counter;
-            else if (sp_3_enable && sp_3_address_to_be_served == 2'b10) ring_counter <= (server_ack)? {ring_counter[0],ring_counter[3:1]} : ring_counter;
-            else if (sp_4_enable && sp_4_address_to_be_served == 2'b11) ring_counter <= (server_ack)? {ring_counter[0],ring_counter[3:1]} : ring_counter;
+            if      (sp_1_enable && sp_1_address_to_be_served == 2'b00) ring_counter <= (server_ack)? {ring_counter[0],ring_counter[NUMBER_OF_CLIENTS-1:1]} : ring_counter;
+            else if (sp_2_enable && sp_2_address_to_be_served == 2'b01) ring_counter <= (server_ack)? {ring_counter[0],ring_counter[NUMBER_OF_CLIENTS-1:1]} : ring_counter;
+            else if (sp_3_enable && sp_3_address_to_be_served == 2'b10) ring_counter <= (server_ack)? {ring_counter[0],ring_counter[NUMBER_OF_CLIENTS-1:1]} : ring_counter;
+            else if (sp_4_enable && sp_4_address_to_be_served == 2'b11) ring_counter <= (server_ack)? {ring_counter[0],ring_counter[NUMBER_OF_CLIENTS-1:1]} : ring_counter;
         end
     end
 

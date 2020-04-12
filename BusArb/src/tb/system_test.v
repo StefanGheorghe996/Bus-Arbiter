@@ -8,7 +8,7 @@ module system_test;
 // General parameters       
 localparam DATA_WIDTH                    = 8;        
 localparam ADDR_WIDTH                    = 4; 
-localparam NR_OF_CLIENTS                 = 4;       
+localparam NR_OF_CLIENTS                 = 3;       
 
 // First client module specific parameters      
 localparam CLIENT_1_ADDR_SPACE_BEGINNING = 0;      // Assigning an address space for the client          
