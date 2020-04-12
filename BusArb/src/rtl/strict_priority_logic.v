@@ -16,7 +16,8 @@ module strict_priority_logic
     input   [1:0]       client_4_priority,
     input               client_4_rq,     
     input               server_ack,
-    output  reg [1:0]       address_to_be_served
+    output  reg [1:0]   address_to_be_served,
+    input               enable
 
 );
 
@@ -63,7 +64,7 @@ module strict_priority_logic
     always @(posedge clk or posedge reset)
     begin
         if(reset) state <= INIT;
-        else
+        else if(enable)
         case (state)
             INIT:   state <= COMPUTE_ADDR; 
             COMPUTE_ADDR : state <= WAIT_ACK;

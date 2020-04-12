@@ -71,6 +71,12 @@ module bus_arbiter #(
 
     wire [1:0] address_to_be_served;
 
+    reg       scheduling_algorithm;
+
+    always @(posedge clk or posedge reset) 
+    begin
+        scheduling_algorithm <= PRIORITY_SCHEDULING_ALGORITHM;
+    end
 
 
     // Module instantiation
@@ -87,7 +93,8 @@ module bus_arbiter #(
         .client_4_priority      (client_4_priority      ),
         .client_4_rq            (client_4_rq            ),
         .server_ack             (server_ack             ),
-        .address_to_be_served   (address_to_be_served   )
+        .address_to_be_served   (address_to_be_served   ),
+        .enable                 (~scheduling_algorithm  )
     );
 
     always @(posedge clk or posedge reset)
@@ -95,7 +102,7 @@ module bus_arbiter #(
         client_1_priority <= CLIENT_1_PRIORITY;
         client_2_priority <= CLIENT_2_PRIORITY;
         client_3_priority <= CLIENT_3_PRIORITY;
-        client_4_priority <= CLIENT_4_PRIORITY;
+        client_4_priority <= CLIENT_4_PRIORITY;      
     end
 
 

@@ -37,9 +37,9 @@ localparam NO_DELAY                      = 1;
 
 
 // Bus arbiter module specific parameters
-localparam CLIENT_1_PRIORITY = 3;
+localparam CLIENT_1_PRIORITY = 1;
 localparam CLIENT_2_PRIORITY = 2;
-localparam CLIENT_3_PRIORITY = 1;
+localparam CLIENT_3_PRIORITY = 3;
 localparam CLIENT_4_PRIORITY = 0;
 localparam PRIORITY_SCHEDULING_ALGORITHM = 1'b0;     // 0 = strict priority 1 = round robin
 
