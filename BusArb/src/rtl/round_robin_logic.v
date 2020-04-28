@@ -201,10 +201,10 @@ module round_robin_logic#(
               
     end
 
-    assign sp_1_enable = ring_counter[3];
-    assign sp_2_enable = ring_counter[2];
-    assign sp_3_enable = ring_counter[1];
-    assign sp_4_enable = ring_counter[0];
+    assign sp_1_enable = ring_counter[3] && enable;
+    assign sp_2_enable = ring_counter[2] && enable;
+    assign sp_3_enable = ring_counter[1] && enable;
+    assign sp_4_enable = ring_counter[0] && enable;
 
     always @(posedge clk or posedge reset)
     begin
